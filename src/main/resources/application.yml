@@ -1,0 +1,13 @@
+server:
+  port: 8002
+# 确保 Spring Boot 提供静态资源
+spring:
+  resources:
+   static-locations: classpath:/static/
+  application:
+    name: web
+
+github:
+  client-id:
+  client-secret:
+  redirect-uri:
