@@ -1,15 +1,5 @@
-# 基于 Ubuntu 22.04 基础镜像
-FROM ubuntu:22.04
-
-# 设置环境变量，避免安装过程中出现交互提示
-ENV DEBIAN_FRONTEND=noninteractive
-
-# 更新系统并安装必要的依赖和 OpenJDK 17
-RUN apt-get update && \
-    apt-get install -y openjdk-17-jdk && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
+# 1. 选择一个基础镜像；可以自己docker pull
+FROM openjdk:17-jdk-slim
 # 2. 设置工作目录
 WORKDIR /app
 
