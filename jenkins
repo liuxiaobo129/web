@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = 'web-app:latest'
+        DOCKER_REGISTRY = 'lxb631'
+        K8S_DEPLOYMENT = 'web-app-deployment'
+        K8S_SERVICE = 'web-app-service'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    // 构建 Docker 镜像
+                    sh '/usr/local/bin/docker build -t $DOCKER_IMAGE .'
+                }
+            }
+        }
+
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    // 登录 Docker Hub 并推送镜像
+                    sh 'docker login -u liu1294605662 -p liu1294605662!@'
+                    sh 'docker tag $DOCKER_IMAGE $DOCKER_REGISTRY/$DOCKER_IMAGE'
+                    sh 'docker push $DOCKER_REGISTRY/$DOCKER_IMAGE'
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    // 更新 Kubernetes Deployment
+                    sh 'kubectl set image deployment/$K8S_DEPLOYMENT web-app=$DOCKER_REGISTRY/$DOCKER_IMAGE --record'
+                    sh 'kubectl rollout status deployment/$K8S_DEPLOYMENT'
+                }
+            }
+        }
+    }
+}
