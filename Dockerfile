@@ -1,6 +1,5 @@
-# 1. 选择一个基础镜像
-FROM dragonwell-registry.cn-hangzhou.cr.aliyuncs.com/dragonwell/dragonwell:17
-
+# 1. 选择一个基础镜像；可以自己docker pull
+FROM openjdk:17-jdk-slim
 # 2. 设置工作目录
 WORKDIR /app
 
