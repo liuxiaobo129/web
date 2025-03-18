@@ -1,0 +1,8 @@
+java -javaagent:/Users/liuxiaobo/program/pinpoint-agent-2.5.2/pinpoint-bootstrap-2.5.2.jar \
+     -Dpinpoint.agentId=my-spring-boot-app \
+     -Dpinpoint.applicationName=my-spring-boot-app \
+     -jar web-1.0-SNAPSHOT.jar
+
+
+
+     java -javaagent:/Users/liuxiaobo/program/pinpoint-agent-2.5.2/pinpoint-bootstrap-2.5.2.jar -Dpinpoint.agentId=my-spring-boot-app -Dpinpoint.applicationName=my-spring-boot-app -jar web-1.0-SNAPSHOT.jar

@@ -5,9 +5,22 @@ spring:
   resources:
    static-locations: classpath:/static/
   application:
-    name: web
+    name: my-spring-boot-app
 
 github:
-  client-id:
-  client-secret:
-  redirect-uri:
+  client-id: Ov23lieVPextjk6cLzm6
+  client-secret: a7ab7a4bd4ab02b029a4ad370b671be5e1272aba
+  redirect-uri: http://localhost:8002/github/callback
+
+# 配置应用名
+pinpoint:
+  applicationName: my-spring-boot-app
+# 配置 Pinpoint 采集器地址（默认端口 9991）
+  collector:
+      ip: localhost
+      tcp:
+         port: 9991
+      stat:
+         port: 9992
+      span:
+         port: 9993
